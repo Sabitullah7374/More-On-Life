@@ -50,8 +50,11 @@ class LoginScreen extends StatelessWidget {
                   } else if (password.isEmpty) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Please enter your password')));
                   } else {
-                    // Handle login logic here
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login successful!')));
+                    Navigator.pushNamed(
+                      context,
+                      '/otp',
+                      arguments: {'email': email},
+                    );
                   }
                 },
                 child: Text("Log in", style: TextStyle(color: Colors.white)),
@@ -68,11 +71,9 @@ class LoginScreen extends StatelessWidget {
                   Text("No account?", style: TextStyle(color: Color(0xFF36454F), fontSize: 14)),
                   GestureDetector(
                     onTap: () {
-                      // Navigate to Sign Up activity
                       Navigator.pushNamed(context, '/signup');
                     },
-                    child:
-                    Text(" Sign up", style: TextStyle(color: Color(0xFF3181E5), fontWeight: FontWeight.bold, fontSize: 14)),
+                    child: Text(" Sign up", style: TextStyle(color: Color(0xFF3181E5), fontWeight: FontWeight.bold, fontSize: 14)),
                   ),
                 ],
               ),
